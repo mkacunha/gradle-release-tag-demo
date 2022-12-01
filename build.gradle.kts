@@ -9,7 +9,6 @@ plugins {
 apply(from = "./gradle/release.gradle")
 
 group = "com.mkacunha"
-version = "1.0-SNAPSHOT"
 
 repositories {
     mavenCentral()
