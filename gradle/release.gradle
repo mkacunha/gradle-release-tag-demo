@@ -1,6 +1,6 @@
 release {
     failOnSnapshotDependencies = false
-    tagTemplate = '$name-$version'
+    tagTemplate = '$version'
 
     git {
         requireBranch = ''
