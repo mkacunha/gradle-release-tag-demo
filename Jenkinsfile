@@ -13,6 +13,10 @@ pipeline {
     stage('build') {
       steps {
         sh './gradlew build'
+        withGradle() {
+          sh './gradlew build -x Test'
+        }
+
       }
     }
 
