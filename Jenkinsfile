@@ -45,7 +45,7 @@ pipeline {
     stage('tag') {
       steps {
         sh 'git config --global user.email "mkacunha@gmail.com"'
-        sh 'git config --global user.name "Maiko Cunha"'
+        sh 'git config --global user.name "mkacunha"'
         sh './gradlew release -Prelease.useAutomaticVersion=true'
       }
     }
