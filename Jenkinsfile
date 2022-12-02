@@ -28,6 +28,7 @@ pipeline {
             echo credentialsId
             echo passwordVariable
             echo usernameVariable
+            echo 'oiiiiiiiiiiiiiiiiiiiiiiii'
             sh './gradlew release -Prelease.useAutomaticVersion=true'
         }
       }
