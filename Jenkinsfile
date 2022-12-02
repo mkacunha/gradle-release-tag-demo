@@ -3,20 +3,13 @@ pipeline {
   stages {
     stage('clean') {
       steps {
-        withGradle() {
-          sh './gradlew clean'
-        }
-
+        sh './gradlew clean'
       }
     }
 
     stage('build') {
       steps {
         sh './gradlew build -x Test'
-        withGradle() {
-          sh './gradlew build -x Test'
-        }
-
       }
     }
 
@@ -51,9 +44,9 @@ pipeline {
 
     stage('tag') {
       steps {
-        sh '''git config --global user.email "mkacunha@gmail.com"
-git config --global user.name "Maiko Cunha"
-./gradlew release -Prelease.useAutomaticVersion=true'''
+        sh 'git config --global user.email "mkacunha@gmail.com"'
+        sh 'git config --global user.name "Maiko Cunha"'
+        sh './gradlew release -Prelease.useAutomaticVersion=true'
       }
     }
 
