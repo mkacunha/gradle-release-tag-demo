@@ -25,7 +25,7 @@ pipeline {
     stage('tag') {
       steps {
         echo 'oiiiiiiiiiiiiiiiiiiiiiiii'
-        withCredentials([sshUserPrivateKey(credentialsId: 'github-mkacunha-ssh',  keyFileVariable: 'SSH_PRIVATE_KEY', usernameVariable: 'SSH_USERNAME')]) {
+        withCredentials([sshUserPrivateKey(credentialsId: 'github-mkacunha-ssh', keyFileVariable: 'SSH_PRIVATE_KEY', usernameVariable: 'SSH_USERNAME')]) {
             echo 'oiiiiiiiiiiiiiiiiiiiiiiii'
             echo "keyy ->  ${SSH_PRIVATE_KEY} "
             echo "user ->  ${SSH_USERNAME} "
