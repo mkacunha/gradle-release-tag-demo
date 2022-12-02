@@ -14,18 +14,20 @@ pipeline {
     }
 
     stage('test') {
-        steps {
-            sh './gradlew unitTest'
-            sh './gradlew integrationTest'
-            sh './gradlew componentTest'
-            sh './gradlew mutationTest'
-        }
+      steps {
+        sh './gradlew unitTest'
+        sh './gradlew integrationTest'
+        sh './gradlew componentTest'
+        sh './gradlew mutationTest'
+      }
     }
 
     stage('tag') {
       steps {
+        sh 'git remote -v'
         sh './gradlew release -Prelease.useAutomaticVersion=true'
       }
     }
+
   }
 }
