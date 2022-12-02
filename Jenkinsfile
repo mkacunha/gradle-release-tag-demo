@@ -25,11 +25,11 @@ pipeline {
     stage('tag') {
       steps {
         echo 'oiiiiiiiiiiiiiiiiiiiiiiii'
-        withCredentials([usernamePassword(credentialsId: 'github-mkacunha-ssh', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
+        withCredentials([sshUserPrivateKey(credentialsId: 'github-mkacunha-ssh',  keyFileVariable: 'SSH_PRIVATE_KEY', usernameVariable: 'SSH_USERNAME')]) {
             echo 'oiiiiiiiiiiiiiiiiiiiiiiii'
-            echo credentialsId
-            echo passwordVariable
+            echo keyFileVariable
             echo usernameVariable
+            echo 'oiiiiiiiiiiiiiiiiiiiiiiii222222'
 
             //sh './gradlew release -Prelease.useAutomaticVersion=true'
         }
