@@ -22,6 +22,30 @@ tasks.test {
     useJUnitPlatform()
 }
 
+tasks.register<Test>("unitTest") {
+    useJUnitPlatform {
+        excludeTags("mutation", "integration", "component")
+    }
+}
+
+tasks.register<Test>("integrationTest") {
+    useJUnitPlatform {
+        excludeTags("mutation", "unit", "component")
+    }
+}
+
+tasks.register<Test>("componentTest") {
+    useJUnitPlatform {
+        excludeTags("mutation", "integration", "unit")
+    }
+}
+
+tasks.register<Test>("mutationTest") {
+    useJUnitPlatform {
+        excludeTags("unit", "integration", "component")
+    }
+}
+
 tasks.withType<KotlinCompile> {
     kotlinOptions.jvmTarget = "1.8"
 }
