@@ -24,7 +24,7 @@ pipeline {
 
     stage('tag') {
       steps {
-        sh 'git remote -v'
+        git(url: 'https://github.com/mkacunha/gradle-release-tag-demo.git', branch: 'master', credentialsId: 'github-mkacunha', poll: true)
         sh './gradlew release -Prelease.useAutomaticVersion=true'
       }
     }
