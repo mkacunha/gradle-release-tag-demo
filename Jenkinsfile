@@ -28,7 +28,7 @@ pipeline {
         withCredentials([[$class: 'SSHUserPrivateKeyBinding', credentialsId: "github-mkacunha-ssh", keyFileVariable: 'SSH_PRIVATE_KEY', passphraseVariable: '', usernameVariable: 'SSH_USERNAME']]){
             echo 'oiiiiiiiiiiiiiiiiiiiiiiii3333444'
             echo key %SSH_PRIVATE_KEY%
-            echo user ->  $SSH_USERNAME
+            echo user $SSH_USERNAME
 
             //sh './gradlew release -Prelease.useAutomaticVersion=true'
         }
