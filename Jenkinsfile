@@ -49,7 +49,6 @@ pipeline {
                 string(credentialsId: 'git-account', variable: 'GIT_COMMITTER_ACCOUNT'),
                 string(credentialsId: 'git-name', variable: 'GIT_COMMITTER_NAME'),
                 string(credentialsId: 'github-token', variable: 'GITHUB_API_TOKEN')]) {
-                   sh echo '${GIT_COMMITTER_EMAIL}'
                    sh 'git config user.email "${GIT_COMMITTER_EMAIL}"'
                    sh 'git config user.name "${GIT_COMMITTER_NAME}"'
                    sh './gradlew release -Prelease.useAutomaticVersion=true'
