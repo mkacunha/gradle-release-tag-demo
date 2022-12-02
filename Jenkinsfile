@@ -24,12 +24,14 @@ pipeline {
 
     stage('tag') {
       steps {
+        echo 'oiiiiiiiiiiiiiiiiiiiiiiii'
         withCredentials([usernamePassword(credentialsId: 'github-mkacunha-ssh', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
+            echo 'oiiiiiiiiiiiiiiiiiiiiiiii'
             echo credentialsId
             echo passwordVariable
             echo usernameVariable
-            echo 'oiiiiiiiiiiiiiiiiiiiiiiii'
-            sh './gradlew release -Prelease.useAutomaticVersion=true'
+
+            //sh './gradlew release -Prelease.useAutomaticVersion=true'
         }
       }
     }
