@@ -24,7 +24,7 @@ pipeline {
 
     stage('tag') {
       steps {
-        git remote -v
+        sh 'git remote -v'
 
 //         withCredentials([[$class: 'SSHUserPrivateKeyBinding', credentialsId: "github-mkacunha-ssh", keyFileVariable: 'SSH_PRIVATE_KEY', passphraseVariable: '', usernameVariable: 'SSH_USERNAME']]){
 //             sh 'git remote -v'
