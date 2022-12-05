@@ -24,10 +24,8 @@ pipeline {
 
     stage('tag') {
       steps {
-        withCredentials([usernamePassword(credentialsId: 'github-mkacunha', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
-            sh "echo https://$USERNAME:$PASSWORD@github.com > ~/.git-credentials"
-            sh "cat ~/.git-credentials"
-            sh "./gradlew release -Prelease.useAutomaticVersion=true"
+        withCredentials([gitUsernamePassword(credentialsId: 'github-mkacunha', gitToolName: 'git-tool')]) {
+          sh "./gradlew release -Prelease.useAutomaticVersion=true"
         }
       }
     }
