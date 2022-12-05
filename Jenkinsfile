@@ -27,8 +27,8 @@ pipeline {
         echo 'oiiiiiiiiiiiiiiiiiiiiiiii'
         withCredentials([usernamePassword(credentialsId: 'teste', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
             echo 'Oi quatroooooooo'
-            echo 'username -> ${USERNAME}'
-            echo 'password -> ${PASSWORD}'
+            echo "username -> ${USERNAME} "
+            echo "password -> ${PASSWORD} "
             echo 'Oiii foiiiiiii'
         }
 
