@@ -25,17 +25,24 @@ pipeline {
     stage('tag') {
       steps {
         echo 'oiiiiiiiiiiiiiiiiiiiiiiii'
-        withCredentials([[$class: 'SSHUserPrivateKeyBinding', credentialsId: "github-mkacunha-ssh", keyFileVariable: 'SSH_PRIVATE_KEY', passphraseVariable: '', usernameVariable: 'SSH_USERNAME']]){
-            sh 'git remote -v'
-            echo 'oiiiiiiiiiiiiiiiiiiiiiiii'
-            echo "keyy ->  ${SSH_PRIVATE_KEY} "
-            echo "user ->  ${SSH_USERNAME} "
-            sh 'mkdir -p ~/.ssh'
-            sh 'echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa'
-            sh 'cat ~/.ssh/id_rsa'
-
-            sh './gradlew release -Prelease.useAutomaticVersion=true'
+        withCredentials([usernamePassword(credentialsId: 'github-mkacunha', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
+            echo 'Oi quatroooooooo'
+            echo 'username -> $USERNAME'
+            echo 'password -> $PASSWORD'
+            echo 'Oiii foiiiiiii'
         }
+
+//         withCredentials([[$class: 'SSHUserPrivateKeyBinding', credentialsId: "github-mkacunha-ssh", keyFileVariable: 'SSH_PRIVATE_KEY', passphraseVariable: '', usernameVariable: 'SSH_USERNAME']]){
+//             sh 'git remote -v'
+//             echo 'oiiiiiiiiiiiiiiiiiiiiiiii'
+//             echo "keyy ->  ${SSH_PRIVATE_KEY} "
+//             echo "user ->  ${SSH_USERNAME} "
+//             sh 'mkdir -p ~/.ssh'
+//             sh 'echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa'
+//             sh 'cat ~/.ssh/id_rsa'
+//
+//             sh './gradlew release -Prelease.useAutomaticVersion=true'
+//         }
       }
     }
   }
