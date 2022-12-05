@@ -29,8 +29,9 @@ pipeline {
             echo 'oiiiiiiiiiiiiiiiiiiiiiiii'
             echo "keyy ->  ${SSH_PRIVATE_KEY} "
             echo "user ->  ${SSH_USERNAME} "
+            sh 'GIT_SSH_COMMAND = "ssh -i ${SSH_PRIVATE_KEY}"'
 
-            //sh './gradlew release -Prelease.useAutomaticVersion=true'
+            sh './gradlew release -Prelease.useAutomaticVersion=true'
         }
       }
     }
