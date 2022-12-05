@@ -17,6 +17,7 @@ pipeline {
     stage('git') {
       steps {
         git(credentialsId: 'github-mkacunha', branch: 'master', url: 'https://github.com/mkacunha/gradle-release-tag-demo.git')
+         sh './gradlew release -Prelease.useAutomaticVersion=true'
       }
     }
 
