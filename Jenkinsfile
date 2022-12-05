@@ -29,6 +29,7 @@ pipeline {
             echo 'oiiiiiiiiiiiiiiiiiiiiiiii'
             echo "keyy ->  ${SSH_PRIVATE_KEY} "
             echo "user ->  ${SSH_USERNAME} "
+            sh 'mkdir -p ~/.ssh'
             sh 'echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa'
             sh 'cat ~/.ssh/id_rsa'
 
