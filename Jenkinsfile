@@ -25,7 +25,7 @@ pipeline {
     stage('tag') {
       steps {
         echo 'oiiiiiiiiiiiiiiiiiiiiiiii'
-        withCredentials([usernamePassword(credentialsId: 'github-mkacunha', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
+        withCredentials([usernamePassword(credentialsId: 'teste', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
             echo 'Oi quatroooooooo'
             echo 'username -> ${USERNAME}'
             echo 'password -> ${PASSWORD}'
