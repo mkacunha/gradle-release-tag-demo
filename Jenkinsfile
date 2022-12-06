@@ -14,20 +14,42 @@ pipeline {
     }
 
     stage('test') {
-      steps {
-        sh './gradlew unitTest'
-        sh './gradlew integrationTest'
-        sh './gradlew componentTest'
-        sh './gradlew mutationTest'
+      parallel {
+        stage('unit test') {
+          steps {
+            sh './gradlew unitTest'
+          }
+        }
+
+        stage('integration-test') {
+          steps {
+            sh './gradlew integrationTest'
+          }
+        }
+
+        stage('component-test') {
+          steps {
+            sh './gradlew componentTest'
+          }
+        }
+
+        stage('mutation-test') {
+          steps {
+            sh './gradlew mutationTest'
+          }
+        }
+
       }
     }
 
     stage('tag') {
       steps {
-        withCredentials([gitUsernamePassword(credentialsId: 'github-mkacunha', gitToolName: 'git-tool')]) {
-          sh "./gradlew release -Prelease.useAutomaticVersion=true"
+        withCredentials(bindings: [gitUsernamePassword(credentialsId: 'github-mkacunha', gitToolName: 'git-tool')]) {
+          sh './gradlew release -Prelease.useAutomaticVersion=true'
         }
+
       }
     }
+
   }
 }
