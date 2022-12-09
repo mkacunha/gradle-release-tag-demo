@@ -16,7 +16,7 @@ def buildDockerImage(version) {
          sh "./gradlew clean build -x Test"
          sh "ls"
          sh "ls ./build/libs"
-         sh "docker build --pull -t ${newDockerImage} ."
+         sh "docker build -t ${newDockerImage} ."
     }
     return newDockerImage
 }
