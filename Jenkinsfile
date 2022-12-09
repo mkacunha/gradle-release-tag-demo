@@ -10,7 +10,7 @@ def createTag() {
     return '1.0.0'
 }
 
-def buildAndPushDockerImage(version) {
+def buildDockerImage(version) {
     def newDockerImage = "mkacunha/gradle-release:$version"
     dir(env.PWD) {
          sh "./gradlew clean build -x Test"
