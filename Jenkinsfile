@@ -18,6 +18,17 @@ def buildDockerImage(version) {
     return newDockerImage
 }
 
+def runAcceptanceTest(environment) {
+    dir(env.PWD) {
+        sh './gradlew unitTest'
+        sh './gradlew integrationTest'
+        sh './gradlew componentTest'
+        sh './gradlew mutationTest'
+    }
+
+    return true
+}
+
 private def getCurrentVersion() {
     def lines = readFile("${env.PWD}/gradle.properties").split("\n")
     def result = "latest"
