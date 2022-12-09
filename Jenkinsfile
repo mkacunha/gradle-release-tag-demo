@@ -2,7 +2,9 @@
 
 def createTag() {
     withCredentials([gitUsernamePassword(credentialsId: 'github-mkacunha', gitToolName: 'git-tool')]) {
-      sh "./gradlew release -Prelease.useAutomaticVersion=true"
+        dir($PWD) {
+             sh "./gradlew release -Prelease.useAutomaticVersion=true"
+        }
     }
 
     return '1.0.0'
