@@ -11,4 +11,5 @@ internal class UtilsTest {
     internal fun sum() {
         assertEquals(2, Utils().sum(1, 1))
     }
+
 }
